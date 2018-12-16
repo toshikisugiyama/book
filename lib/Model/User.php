@@ -33,4 +33,17 @@ class User extends \MyApp\Model{
 
     return $user;
   }
+
+  public function profile($values) {
+    if (!isset($_POST['id'])) {
+      throw new \MyApp\Exception();
+    }
+    $sql = sprintf("update users set name = ?, email = ?, password = ?, update_date = now() where id = %d", $_POST['id']);
+    $stmt = $this->db->prepare($sql);
+    $res = $stmt->execute([
+      ':name' => $values['name'],
+      ':email' => $values['email'],
+      ':password' => password_hash($values['password'], PASSWORD_DEFAULT)
+    ]);
+  }
 }

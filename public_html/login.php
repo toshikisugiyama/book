@@ -21,26 +21,28 @@ $app->run();
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header></header>
+  <header>
+    <h1 class="title"><a href="/">Shoseki Uploader</a></h1>
+  </header>
   <main>
     <div class="container login">
-      <h1 class="title">Log In</h1>
+      <h1 class="title">ログイン</h1>
       <form action="" method="post">
         <p>
-          <input type="text" name="name" value="<?= isset($app->getValues()->name) ? h($app->getValues()->name) : ''; ?>" placeholder="Name" autocomplete="off">
+          <input type="text" name="name" value="<?= isset($app->getValues()->name) ? h($app->getValues()->name) : ''; ?>" placeholder="名前" autocomplete="off">
         </p>
         <p>
-          <input type="email" name="email" placeholder="E-mail" value="<?= isset($app->getValues()->email) ? h($app->getValues()->email) : ''; ?>" autocomplete="off">
+          <input type="email" name="email" placeholder="メール" value="<?= isset($app->getValues()->email) ? h($app->getValues()->email) : ''; ?>" autocomplete="off">
         </p>
         <p>
-          <input type="password" name="password" placeholder="Password">
+          <input type="password" name="password" placeholder="パスワード">
         </p>
         <p>
-          <input class="login button" type="submit" value="Log In">
+          <input class="login button" type="submit" value="ログイン">
         </p>
         <p class="err"><?= h($app->getErrors('login')); ?></p>
         <p>
-          <a class="link" href="/signup.php">Sign Up</a>
+          <a class="link" href="/signup.php">サインアップ</a>
         </p>
         <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
       </form>

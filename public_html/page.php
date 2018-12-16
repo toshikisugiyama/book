@@ -8,6 +8,7 @@ $app->run();
 $addbook = new MyApp\Controller\Addbook();
 $addbook->run();
 
+
 //$app->me()
 //$addbook->getValues()->books
 ?>
@@ -32,18 +33,17 @@ $addbook->run();
   </header>
   <main>
     <a class="add" href="/addbook.php"><i class="fas fa-fw fa-plus"></i>本を追加</a>
-    <div class="container index">
-      <?php if ($addbook->getValues()->books): ?>
-        <?php foreach ($addbook->getValues()->books as $books => $book) : ?>
-          <section class="book-box">
-            <h2 class="book-title title"><a href="/page.php"><?= h($book->title) ? h($book->title) : 'タイトルがありません'; ?></a></h2>
-            <div class="img-wrapper"><a href="/page.php"><img src="<?= h($book->image); ?>" alt="<?= h($book->title) ? h($book->title) : 'タイトルがありません'; ?>"></a></div>
-            <div class="text-wrapper"><p><?= h($book->reason) ? h($book->reason) : '理由がありません'; ?></p></div>
-          </section>
-        <?php endforeach; ?>
-      <?php else: ?>
-        <h2 class="book-title title">書籍はありません</h2>
-      <?php endif ?>
+    <div class="container page">
+        <h2 class="book-title title"><?= h($addbook->title); ?></h2>
+        <div>
+          <div class="img-wrapper"><img src="<?= h($addbook->image); ?>" alt="<?= h($addbook->title); ?>"></div>
+          <div class="text-wrapper"><p><?= h($addbook->reason); ?></p></div>
+        </div>
+        <p>
+          <a class="link" href="/edit.php">編集</a>
+          <a class="link" href="/delete.php">削除</a>
+          <a class="link" href="/">戻る</a>
+        </p>
     </div>
   </main>
   <footer></footer>
