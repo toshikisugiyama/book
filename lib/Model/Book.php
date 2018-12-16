@@ -11,7 +11,7 @@ class Book extends \MyApp\Model{
       ':image' => $values['image']
     ]);
     if ($res === false) {
-      throw new Exception('エラー');
+      throw new \Exception('エラー');
     }
   }
 
