@@ -109,6 +109,10 @@ main {
 .container.page>div>div {
   width: 50%;
 }
+.container.delete>form,
+.container.delete>p {
+  display: inline-block;
+}
 .add {
   position: absolute;
   top: 15px;
