@@ -10,8 +10,6 @@ class Book extends \MyApp\Model{
       ':reason' => $values['reason'],
       ':image' => $values['image']
     ]);
-    // var_dump($values['image']);
-    // exit;
     if ($res === false) {
       throw new Exception('エラー');
     }

@@ -8,7 +8,7 @@ create table users (
   image text(255),
   email varchar(255) unique,
   password varchar(255),
-  del_flg tinyint(1) not null default 0,
+  del_flg tinyint(1) not null default 1,
   create_date datetime not null,
   update_date datetime
 );
@@ -18,7 +18,7 @@ create table books (
   title varchar(255) not null,
   reason varchar(255) not null,
   image varchar(255) not null,
-  del_flg tinyint(1) not null default 0,
+  del_flg tinyint(1) not null default 1,
   create_date datetime not null,
   update_date datetime
 );

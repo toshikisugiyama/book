@@ -31,7 +31,7 @@ $addbook->run();
   </header>
   <main>
     <div class="container">
-      <h1 class="title">編集</h1>
+      <h1 class="title">おすすめ書籍アップロード</h1>
       <?php if (isset($error)): ?>
         <p class="err"><?= h($error); ?></p>
       <?php endif ?>

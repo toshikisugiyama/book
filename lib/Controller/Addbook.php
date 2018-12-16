@@ -42,9 +42,9 @@ class Addbook extends \MyApp\Controller {
 
 
     
-    // if ($upfile['error'] > 0) {
-    //     throw new Exception('ファイルアップロードに失敗しました。');
-    // }
+    if ($upfile['error'] > 0) {
+        throw new Exception('ファイルアップロードに失敗しました。');
+    }
 
     $tmp_name = $upfile['tmp_name'];
 
@@ -58,9 +58,9 @@ class Addbook extends \MyApp\Controller {
         , 'png' => 'image/png'
         , 'gif' => 'image/gif'
     ];
-    // if (!in_array($mimetype, $allowed_types)) {
-    //     throw new Exception('許可されていないファイルタイプです。');
-    // }
+    if (!in_array($mimetype, $allowed_types)) {
+        throw new Exception('許可されていないファイルタイプです。');
+    }
 
     // ファイル名
     $filename = sha1_file($tmp_name);
@@ -68,7 +68,7 @@ class Addbook extends \MyApp\Controller {
     // 拡張子
     $ext = array_search($mimetype, $allowed_types);
 
-    // 保存ファイルパス
+    // 保存作ファイルパス
     $destination = sprintf('%s/%s.%s'
         , 'image'
         , $filename
@@ -77,17 +77,17 @@ class Addbook extends \MyApp\Controller {
 
 
     // アップロードディレクトリに移動
-    // if (!move_uploaded_file($tmp_name, $destination)) {
-    //     throw new Exception('ファイルの保存に失敗しました。');
-    // }
+    if (!move_uploaded_file($tmp_name, $destination)) {
+        throw new Exception('ファイルの保存に失敗しました。');
+    }
 
 
     $this->setValues('title', $_POST['title']);
     $this->setValues('reason', $_POST['reason']);
-    $this->setValues('image', $destination);
+    $this->setValues('image', $tmp_name);
 
-    // var_dump($destination);
-    // exit;
+    var_dump($tmp_name);
+    exit;
 
     if ($this->hasError()) {
       return;
@@ -98,7 +98,7 @@ class Addbook extends \MyApp\Controller {
         $userModel->add([
           'title' => $_POST['title'],
           'reason' => $_POST['reason'],
-          'image' => $destination
+          'image' => $_POST['image']
         ]);
       } catch (Exception $e) {
         echo "エラー";

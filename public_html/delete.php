@@ -30,14 +30,11 @@ $addbook->run();
     </form>
   </header>
   <main>
-    <div class="container delete">
+    <div class="container">
       <h1 class="title">削除しますか？</h1>
-      <form action="/" method="post">
+      <form>
         <input type="submit" class="button" value="削除する" name="delete">
       </form>
-      <p>
-        <a class="link" href="/">戻る</a>
-      </p>
     </div>
   </main>
   <footer></footer>
