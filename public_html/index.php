@@ -32,6 +32,7 @@ $addbook->run();
   </header>
   <main>
     <a class="add" href="/addbook.php"><i class="fas fa-fw fa-plus"></i>本を追加</a>
+    <h1 class="title">おすすめ書籍一覧</h1>
     <div class="container index">
       <?php if ($addbook->getValues()->books): ?>
         <?php foreach ($addbook->getValues()->books as $books => $book) : ?>

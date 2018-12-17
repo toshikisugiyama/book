@@ -15,7 +15,7 @@ $app->run();
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <title>Log In</title>
+  <title>ログイン</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shitajicss@5.0.0/docs/css/shitaji.min.css">
   <link rel="stylesheet" href="style.css">

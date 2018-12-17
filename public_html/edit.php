@@ -31,7 +31,7 @@ $addbook->run();
   </header>
   <main>
     <div class="container">
-      <h1 class="title">おすすめ書籍アップロード</h1>
+      <h1 class="title">編集</h1>
       <?php if (isset($error)): ?>
         <p class="err"><?= h($error); ?></p>
       <?php endif ?>
@@ -46,7 +46,7 @@ $addbook->run();
           <input type="text" name="reason" placeholder="おすすめの理由" autocomplete="off">
         </p>
         <p>
-          <input class="login button" type="submit" value="アップ">
+          <input class="login button" type="submit" value="変更">
         </p>
         <p class="err"><?= h($app->getErrors('login')); ?></p>
         <p>

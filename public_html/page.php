@@ -16,7 +16,7 @@ $addbook->run();
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <title>トップページ</title>
+  <title>詳細表示</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shitajicss@5.0.0/docs/css/shitaji.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
@@ -34,6 +34,7 @@ $addbook->run();
   <main>
     <a class="add" href="/addbook.php"><i class="fas fa-fw fa-plus"></i>本を追加</a>
     <div class="container page">
+
         <h2 class="book-title title"><?= h($addbook->title); ?></h2>
         <div>
           <div class="img-wrapper"><img src="<?= h($addbook->image); ?>" alt="<?= h($addbook->title); ?>"></div>

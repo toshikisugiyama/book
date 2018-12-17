@@ -36,6 +36,7 @@ header>.title {
   line-height: 70px;
   margin-left: 15px;
   font-family: serif;
+  text-align: left;
 }
 @media (max-width: 690px) {
   header>.title {
@@ -62,6 +63,7 @@ main {
 .title {
   font-size: 3.5rem;
   font-weight: bold;
+  text-align: center;
 }
 .container {
   max-width: 960px;
@@ -109,6 +111,12 @@ main {
 .container.page>div>div {
   width: 50%;
 }
+.container.delete {
+  text-align: center;
+}
+.container.delete>form {
+  margin: 60px auto;
+}
 .add {
   position: absolute;
   top: 15px;
@@ -148,7 +156,7 @@ main {
 }
 .text-wrapper {
   width: 90%;
-  margin: 0 auto;
+  margin: 30px auto;
 }
 
 form {
