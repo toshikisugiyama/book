@@ -3,5 +3,5 @@
 namespace MyApp\Exception;
 
 class DuplicateEmail extends \Exception{
-  protected $message = 'Duplicate Email!';
+  protected $message = 'すでに登録されたメールアドレスです';
 }

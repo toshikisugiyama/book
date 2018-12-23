@@ -29,7 +29,7 @@ $addbook->run();
   <header>
     <h1 class="title"><a href="/">Shoseki Uploader</a></h1>
     <form class="logout" action="logout.php" method="post" id="logout">
-      <a href="/profile.php"><?= h($app->me()->name); ?></a>
+      <a href="/profile.php"><img src="<?= h($app->me()->profile_image); ?>" alt="プロフィール画像"><span><?= h($app->me()->name); ?></span></a>
       <input class="button" type="submit" value="ログアウト">
       <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
     </form>
@@ -44,12 +44,16 @@ $addbook->run();
         <p>
           <input type="text" name="title" placeholder="タイトル" autocomplete="off">
         </p>
+        <p class="err"><?= h($addbook->getErrors('title')); ?></p>
         <p>
-          <input type="file" name="image">
+          <input type="hidden" name="MAX_FILE_SIZE" value="<?= h(MAX_FILE_SIZE); ?>">
+          <input class="image" type="file" name="book-image" accept="image/*" capture="camera">
         </p>
+        <p class="err"><?= h($addbook->getErrors('book-image')); ?></p>
         <p>
           <input type="text" name="reason" placeholder="おすすめの理由" autocomplete="off">
         </p>
+        <p class="err"><?= h($addbook->getErrors('reason')); ?></p>
         <p>
           <input class="login button" type="submit" value="アップ">
         </p>

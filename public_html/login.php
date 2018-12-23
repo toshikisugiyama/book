@@ -32,7 +32,7 @@ $app->run();
           <input type="text" name="name" value="<?= isset($app->getValues()->name) ? h($app->getValues()->name) : ''; ?>" placeholder="名前" autocomplete="off">
         </p>
         <p>
-          <input type="email" name="email" placeholder="メール" value="<?= isset($app->getValues()->email) ? h($app->getValues()->email) : ''; ?>" autocomplete="off">
+          <input type="email" name="email" placeholder="メールアドレス" value="<?= isset($app->getValues()->email) ? h($app->getValues()->email) : ''; ?>" autocomplete="off">
         </p>
         <p>
           <input type="password" name="password" placeholder="パスワード">

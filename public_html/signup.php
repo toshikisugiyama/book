@@ -6,7 +6,7 @@ require_once(__DIR__ . '/../config/config.php');
 $app = new MyApp\Controller\Signup();
 
 $app->run();
-// var_dump($_POST);
+// var_dump($app->getValues()->email);
 // exit;
 ?>
 <!DOCTYPE html>
@@ -25,12 +25,18 @@ $app->run();
   <main>
     <div class="container signup">
       <h1 class="title">サインアップ</h1>
-      <form action="" method="post">
+      <form action="" method="post" enctype="multipart/form-data">
         <p>
           <input type="text" name="name" value="<?= isset($app->getValues()->name) ? h($app->getValues()->name) : ''; ?>" placeholder="名前" autocomplete="off">
         </p>
+        <p class="err"><?= h($app->getErrors('name')); ?></p>
         <p>
-          <input type="email" name="email" placeholder="メール" value="<?= isset($app->getValues()->email) ? h($app->getValues()->email) : ''; ?>" autocomplete="off">
+          <input type="hidden" name="MAX_FILE_SIZE" value="<?= h(MAX_FILE_SIZE); ?>">
+          <input class="profile-image" type="file" name="profile-image" accept="image/*" capture="camera">
+        </p>
+        <p class="err"><?= h($app->getErrors('profile-image')); ?></p>
+        <p>
+          <input type="email" name="email" placeholder="メールアドレス" value="<?= isset($app->getValues()->email) ? h($app->getValues()->email) : ''; ?>" autocomplete="off">
         </p>
         <p class="err"><?= h($app->getErrors('email')); ?></p>
         <p>

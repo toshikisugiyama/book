@@ -51,6 +51,16 @@ header>.logout {
   line-height: 70px;
   margin-right: 15px;
 }
+header>.logout>a>img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+header>.logout>a>span {
+  margin-right: 15px;
+}
 
 main {
   display: block;
@@ -89,17 +99,16 @@ main {
   margin: 0 auto;
   height: 500px;
 }
-.container.index {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: inherit;
+main.page {
+  min-height: calc(500px + 140px + 120px);
 }
 .container.page {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 80%;
+  max-width: 960px;
 }
 .container.page>div {
   display: flex;
@@ -110,6 +119,56 @@ main {
 }
 .container.page>div>div {
   width: 50%;
+  min-width: 480px;
+}
+@media (max-width: 480px) {
+  .container.page>div>div {
+    width: 100%;
+    min-width: 100%;
+    margin-top: 5px;
+  }
+}
+.container.page>div>div>p {
+  padding: 0 15px;
+}
+.container.page>.contributor {
+  width: 90%;
+  margin: 0 auto;
+  height: 30px;
+  line-height: 30px;
+  text-align: right;
+}
+.container.page>.contributor>div {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  margin: 0 10px 0 auto;
+  display: inline-block;
+  min-width: 30px;
+}
+.container.page>.contributor>div>img {
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+.container.page>.contributor>span {
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+}
+.page.button-wrapper {
+  position: absolute;
+  width: 100%;
+  margin: 0 auto;
+  bottom: 100px;
+  left: 0;
+  right: 0;
+}
+.page .button {
+  padding: 5px 10px;
+  color: #333;
 }
 .container.delete {
   text-align: center;
@@ -117,9 +176,12 @@ main {
 .container.delete>form {
   margin: 60px auto;
 }
+.profile_image {
+  cursor: pointer;
+}
 .add {
-  position: absolute;
-  top: 15px;
+  position: fixed;
+  top: 85px;
   right: 15px;
   color: #727272;
   transition: .8s;
@@ -130,12 +192,55 @@ main {
 .fa-plus:before {
   position: relative;
 }
+@media (max-width: 400px) {
+  .container.index {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
 .book-box {
+  display: inline-block;
   width: 300px;
   margin: 30px auto;
   border: solid 1px #333;
   border-radius: 10px;
   padding: 30px 0;
+}
+.book-box>.contributor {
+  width: 90%;
+  margin: 0 auto;
+  height: 30px;
+  line-height: 30px;
+  text-align: right;
+}
+.book-box>.contributor>div {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  margin: 0 auto;
+  display: inline-block;
+}
+.book-box>.contributor>div>img {
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+.book-box>.contributor>span {
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+}
+.book-box>a {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 .book-title {
   font-size: 2.5rem;
@@ -143,7 +248,7 @@ main {
   margin: 0 auto 30px;
 }
 .img-wrapper {
-  height: 150px;
+  height: 300px;
   width: 90%;
   margin: 0 auto;
   overflow: hidden;
@@ -156,7 +261,46 @@ main {
 }
 .text-wrapper {
   width: 90%;
-  margin: 30px auto;
+  margin: 30px auto 1px;
+}
+main.profile {
+  min-height: calc(500px + 140px + 120px);
+}
+.profile.container>div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.profile.container>div:nth-child(2)>ul {
+  width: 60%;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 2;
+}
+.profile.container>div:nth-child(2)>ul>li>span {
+  font-weight: normal;
+  color: #808080;
+  font-size: 2.5rem;
+}
+.profile.container>div>.img-wrapper {
+  width: 30%;
+}
+.profile.container>div>.img-wrapper {
+  height: 500px;
+}
+.profile.container>div>.img-wrapper>img {
+  object-position: left;
+}
+.profile.container>div:nth-child(3)>ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100px;
+}
+.profile.container>div:nth-child(3)>ul>li>.button {
+  padding: 5px 10px;
 }
 
 form {
@@ -172,11 +316,21 @@ form>p {
 .button {
   border-radius: 5px;
   cursor: pointer;
-  opacity: 0.8;
+  opacity: 0.7;
   transition: .8s;
+  background-color: #ccc;
+  border: solid 1px #727272;
 }
 .button:hover {
   opacity: 1;
+}
+.page>ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.page>ul>li:not(:last-child) {
+  margin-right: 30px;
 }
 .link {
   color: #808080;
@@ -185,6 +339,29 @@ form>p {
 }
 .link:hover {
   color: #333;
+}
+.to-top {
+  height: 60px;
+  width: 60px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: gray;
+  border-radius: 50%;
+  z-index: 1;
+  opacity: .3;
+  cursor: pointer;
+  transition: .9s;
+}
+.to-top:hover {
+  opacity: 1;
+}
+.to-top::after {
+  content: "\f062";
+  font-family: "Font Awesome 5 Free";
+  font-weight: bold;
+  line-height: 60px;
+  text-align: center;
 }
 footer {
   background-color: #333;

@@ -4,9 +4,7 @@ require_once(__DIR__ . '/../config/config.php');
 
 // var_dump($_SESSION['me']);
 $app = new MyApp\Controller\Profile();
-$app->run();
 
-//$app->me()
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -21,37 +19,30 @@ $app->run();
   <header>
     <h1 class="title"><a href="/">Shoseki Uploader</a></h1>
     <form class="logout" action="logout.php" method="post" id="logout">
-      <a href="/profile.php"><?= h($app->me()->name); ?></a>
+      <a href="/profile.php"><img src="<?= h($app->me()->profile_image); ?>" alt="プロフィール画像"><span><?= h($app->me()->name); ?></span></a>
       <input class="button" type="submit" value="ログアウト">
       <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
     </form>
   </header>
-  <main>
-    <div class="container login">
-      <h1 class="title">プロフィール変更</h1>
-      <form action="" method="post">
-        <p>
-          <label for="name">名前：</label>
-          <input type="text" name="name" id="name" value="<?= h($app->me()->name); ?>" placeholder="Name" autocomplete="off">
-        </p>
-        <p>
-          <label for="email">メール：</label>
-          <input type="email" name="email" id="email" placeholder="E-mail" value="<?= h($app->me()->email); ?>" autocomplete="off">
-        </p>
-        <p>
-          <label for="password">パスワード：</label>
-          <input type="password" name="password" id="password" value="<?= h($app->me()->password); ?>" placeholder="Password">
-        </p>
-        <p>
-          <input class="login button" type="submit" value="変更">
-        </p>
-        <p class="err"><?= h($app->getErrors('login')); ?></p>
-        <p>
-          <a class="link" href="/">戻る</a>
-        </p>
-        <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
-      </form>
-    </div>
+  <main class="profile">
+    <section class="container profile">
+      <h1 class="title">プロフィール</h1>
+      <div>
+        <div class="img-wrapper">
+          <img src="<?= h($app->me()->profile_image); ?>" alt="プロフィール画像">
+        </div>
+        <ul>
+          <li><span>名前: </span><?= h($app->me()->name); ?></li>
+          <li><span>メールアドレス: </span><?= h($app->me()->email); ?></li>
+        </ul>
+      </div>
+      <div>
+        <ul>
+          <li><a class="button" href="changeprofile.php?id=<?= h($app->me()->id); ?>">変更</a></li>
+          <li><a class="link" href="/">戻る</a></li>
+        </ul>
+      </div>
+    </section>
   </main>
   <footer></footer>
 </body>

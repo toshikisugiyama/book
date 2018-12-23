@@ -1,32 +1,20 @@
 <?php
 
-//新規会員登録
 require_once(__DIR__ . '/../config/config.php');
 
-$app = new MyApp\Controller\Index();
+// var_dump($_SESSION['me']);
+$app = new MyApp\Controller\Profile();
 // $app->run();
-
-$addbook = new MyApp\Controller\Addbook();
-// $addbook->run();
-// var_dump($_GET);
+$changepro = new MyApp\Controller\Changeprofile();
+$changepro->run();
+// var_dump($changepro->getErrors());
 // exit;
-$bookModel = new \MyApp\Model\Book();
-// $bookModel->find();
-// var_dump($bookModel->find());
-// exit;
-$editbook = new MyApp\Controller\Editbook();
-$editbook->run();
-
-// var_dump($_GET);
-// echo h($bookModel->find());
-// exit;
-
 ?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <title>編集</title>
+  <title>プロフィール変更</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shitajicss@5.0.0/docs/css/shitaji.min.css">
   <link rel="stylesheet" href="style.css">
@@ -41,29 +29,32 @@ $editbook->run();
     </form>
   </header>
   <main>
-    <div class="container">
-      <h1 class="title">編集</h1>
-      <?php if (isset($error)): ?>
-        <p class="err"><?= h($error); ?></p>
-      <?php endif ?>
-      <form action="" method="POST" enctype="multipart/form-data">
+    <div class="container login">
+      <h1 class="title">プロフィール変更</h1>
+      <form action="" method="post" enctype="multipart/form-data">
         <p>
-          <input type="text" name="title" placeholder="タイトル" value="<?= h($bookModel->find()['title']); ?>" autocomplete="off">
+          <label for="name">名前：</label>
+          <input type="text" name="name" id="name" value="<?= h($app->me()->name); ?>" placeholder="名前" autocomplete="off">
         </p>
-        <p class="err"><?= h($editbook->getErrors('title')); ?></p>
+        <p class="err"><?= h($changepro->getErrors('name')); ?></p>
         <p>
           <input type="hidden" name="MAX_FILE_SIZE" value="<?= h(MAX_FILE_SIZE); ?>">
-          <input class="profile-image" type="file" name="upfile" accept="image/*" capture="camera" value="<?= h($bookModel->find()['image']); ?>">
+          <input class="profile_image" type="file" name="profile_image" accept="image/*" capture="camera">
         </p>
-        <p class="err"><?= h($editbook->getErrors('upfile')); ?></p>
+        <p class="err"><?= h($changepro->getErrors('profile_image')); ?></p>
         <p>
-          <input type="text" name="reason" placeholder="おすすめの理由" value="<?= h($bookModel->find()['reason']); ?>" autocomplete="off">
+          <label for="email">メール：</label>
+          <input type="email" name="email" id="email" placeholder="メールアドレス" value="<?= h($app->me()->email); ?>" autocomplete="off">
         </p>
-        <p class="err"><?= h($editbook->getErrors('reason')); ?></p>
+        <p>
+          <label for="password">パスワード：</label>
+          <input type="password" name="password" id="password" placeholder="パスワード">
+        </p>
+        <p class="err"><?= h($changepro->getErrors('password')); ?></p>
         <p>
           <input class="login button" type="submit" value="変更">
         </p>
-        <p class="err"><?= h($app->getErrors('login')); ?></p>
+        <p class="err"><?= h($changepro->getErrors('login')); ?></p>
         <p>
           <a class="link" href="/">戻る</a>
         </p>

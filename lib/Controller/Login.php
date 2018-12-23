@@ -53,11 +53,11 @@ class Login extends \MyApp\Controller {
 
   private function _validate() {
     if (!isset($_POST['token']) || $_POST['token'] !== $_SESSION['token']) {
-      echo "Invalid Token!";
+      echo "トークンが無効です";
       exit;
     }
     if (!isset($_POST['name']) || !isset($_POST['email']) || !isset($_POST['password'])) {
-      echo "Invalid Form!";
+      echo "フォームが無効です";
       exit;
     }
     if ($_POST['name'] === '' || $_POST['email'] === '' || $_POST['password'] === '') {

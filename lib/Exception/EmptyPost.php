@@ -3,5 +3,5 @@
 namespace MyApp\Exception;
 
 class EmptyPost extends \Exception{
-  protected $message = 'Please enter name/email/password!';
+  protected $message = '名前、メールアドレス、パスワードを入力してください。';
 }

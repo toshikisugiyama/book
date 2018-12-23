@@ -3,5 +3,5 @@
 namespace MyApp\Exception;
 
 class InvalidTitle extends \Exception{
-  protected $message = 'Invalid Title!';
+  protected $message = 'タイトルを入力してください';
 }

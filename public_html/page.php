@@ -7,6 +7,7 @@ $app = new MyApp\Controller\Index();
 $app->run();
 $addbook = new MyApp\Controller\Addbook();
 $addbook->run();
+$page = new MyApp\Controller\Page();
 
 
 //$app->me()
@@ -26,25 +27,30 @@ $addbook->run();
   <header>
     <h1 class="title"><a href="/">Shoseki Uploader</a></h1>
     <form class="logout" action="logout.php" method="post" id="logout">
-      <a href="/profile.php"><?= h($app->me()->name); ?></a>
+      <a href="/profile.php"><img src="<?= h($app->me()->profile_image); ?>" alt="プロフィール画像"><span><?= h($app->me()->name); ?></span></a>
       <input class="button" type="submit" value="ログアウト">
       <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
     </form>
   </header>
-  <main>
+  <main class="page">
     <a class="add" href="/addbook.php"><i class="fas fa-fw fa-plus"></i>本を追加</a>
-    <div class="container page">
-
-        <h2 class="book-title title"><?= h($addbook->title); ?></h2>
-        <div>
-          <div class="img-wrapper"><img src="<?= h($addbook->image); ?>" alt="<?= h($addbook->title); ?>"></div>
-          <div class="text-wrapper"><p><?= h($addbook->reason); ?></p></div>
-        </div>
-        <p>
-          <a class="link" href="/edit.php">編集</a>
-          <a class="link" href="/delete.php">削除</a>
-          <a class="link" href="/">戻る</a>
-        </p>
+    <section class="container page">
+      <h2 class="book-title title"><?= h($page->show()['title']); ?></h2>
+      <div>
+        <div class="img-wrapper"><img src="<?= h($page->show()['image']); ?>" alt="<?= h($_GET['title']); ?>"></div>
+        <div class="text-wrapper"><p><?= h($page->show()['reason']); ?></p></div>
+      </div>
+      <div class="contributor">
+        <div><img src="<?= h($page->show()['profile_image']); ?>" alt="投稿者"></div>
+        <span><?= h($page->show()['name']); ?></span>
+      </div>
+    </section>
+    <div class="page button-wrapper">
+      <ul>
+        <li><a class="link button" href="/edit.php?id=<?= h($_GET['id']); ?>">編集</a></li>
+        <li> <a class="link button" href="/delete.php?id=<?= h($_GET['id']); ?>">削除</a></li>
+        <li><a class="link" href="/">戻る</a></li>
+      </ul>
     </div>
   </main>
   <footer></footer>

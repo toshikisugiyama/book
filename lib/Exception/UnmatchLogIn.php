@@ -3,5 +3,5 @@
 namespace MyApp\Exception;
 
 class UnmatchLogIn extends \Exception{
-  protected $message = 'Name/Email/Password do not match!';
+  protected $message = '名前、メールアドレス、パスワードが一致しません';
 }
