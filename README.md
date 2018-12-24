@@ -17,7 +17,8 @@ programming skill test
 
 【おすすめ書籍削除機能】
 
-【プロジール編集機能】
+【プロフィール編集機能】
+
 
 <img src="https://github.com/toshikisugiyama/book/blob/branch/tree.png" alt="tree" title="tree">
 
